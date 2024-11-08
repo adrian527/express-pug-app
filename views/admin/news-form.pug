@@ -1,0 +1,18 @@
+extends ../layout
+
+block content
+  h1= title
+
+  if !!errors && Object.keys(errors.errors).length !== 0
+    each message in errors.errors 
+        p=message
+  form(method='post')
+    p
+        label Tytuł
+        input(type='text' name='title' value=body ? body.title : '')
+    p
+        label Opis
+        textarea(name='description')=body ? body.description : ''
+    p
+        input(type='submit' name='Save')
+    
