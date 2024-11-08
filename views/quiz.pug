@@ -2,4 +2,17 @@ extends layout
 
 block content
   h1= title
-  p Welcome to #{title}
+  if show 
+    form(method='post')
+      p Jaka jest twoja ulubiona pora roku 
+      ul 
+        each item in data
+          li 
+            label=item.title
+            input(type='radio' name='quiz' value=item._id)
+      input(type="submit")
+  else 
+    h1 Dokonales glosu w ankiecie
+    ul
+    each item in data
+      li #{item.title} - wynik #{item.vote}
